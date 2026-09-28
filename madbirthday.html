@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday Madison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@400;700;800&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lake:#1F3A5F; --sun:#F2B632; --pink:#F48FB1; --paper:#FFFDF7; --ink:#1B1B2F; --sky:#DCEBF7;
+  --bg:var(--sky); --fg:var(--ink); --card:var(--paper);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#15263D;--fg:#F5F1E8;--card:#FFFDF7}
+}
+:root[data-theme="dark"]{--bg:#15263D;--fg:#F5F1E8;--card:#FFFDF7}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Nunito,system-ui,-apple-system,sans-serif;line-height:1.55;overflow-x:hidden}
+h1,h2,h3{font-family:"Bagel Fat One",Nunito,system-ui,sans-serif;font-weight:400;line-height:1.05;margin:0}
+.hand{font-family:"Gochi Hand","Comic Sans MS",cursive}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.25rem;text-align:center}
+.hidden{display:none!important}
+
+.btn{background:var(--sun);color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:.9rem 1.8rem;font-weight:800;font-size:1.1rem;box-shadow:5px 5px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+
+/* intro */
+#intro h1{font-size:clamp(2.6rem,9vw,6rem);max-width:12ch;margin-bottom:1.2rem}
+#intro p{font-size:1.25rem;max-width:34ch;margin:0 0 2rem}
+.env{width:180px;height:120px;margin:0 auto 2rem;position:relative;animation:wobble 2.2s ease-in-out infinite}
+.env svg{width:100%;height:100%}
+@keyframes wobble{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(-6px)}}
+
+/* confession */
+#confess .poster{background:var(--card);color:var(--ink);border:4px solid var(--ink);padding:2rem 1.5rem;max-width:420px;width:100%;transform:rotate(-2deg);box-shadow:10px 10px 0 var(--pink);animation:drop .8s cubic-bezier(.2,1.6,.4,1) both;position:relative}
+.poster::before{content:"";position:absolute;top:-14px;left:50%;width:28px;height:28px;margin-left:-14px;border-radius:50%;background:var(--pink);border:3px solid var(--ink)}
+.poster h2{font-size:clamp(3rem,12vw,4.5rem);color:#C8102E;letter-spacing:.02em}
+.poster .sub{font-weight:800;margin:.2rem 0 1rem}
+.poster .pic{border:3px dashed var(--ink);height:150px;display:grid;place-items:center;margin:1rem 0;font-size:1.4rem;background:repeating-linear-gradient(45deg,#fff,#fff 10px,#f7f0e1 10px,#f7f0e1 20px)}
+.poster ul{text-align:left;padding-left:1.2rem;margin:0 0 1rem}
+.poster .reward{font-size:1.5rem}
+@keyframes drop{from{transform:translateY(-120vh) rotate(-20deg)}to{transform:translateY(0) rotate(-2deg)}}
+#confess .lead{font-size:1.25rem;max-width:36ch;margin:0 0 2rem}
+
+/* search */
+#search h2{font-size:clamp(2.2rem,7vw,4rem);margin-bottom:.6rem}
+#search .lead{max-width:40ch;margin:0 0 2rem;font-size:1.15rem}
+.spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;width:100%;max-width:900px}
+.spot{perspective:900px;height:230px;background:none;border:0;padding:0}
+.spot .inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,1.4,.5,1);transform-style:preserve-3d}
+.spot.open .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:3px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;color:var(--ink)}
+.front{background:var(--card);box-shadow:6px 6px 0 var(--lake)}
+.front .emo{font-size:3.2rem;line-height:1;margin-bottom:.6rem}
+.front b{font-size:1.2rem}
+.front small{opacity:.7;margin-top:.3rem}
+.back{background:var(--sun);transform:rotateY(180deg);font-size:1.05rem;box-shadow:6px 6px 0 var(--pink)}
+.back .hand{font-size:1.35rem;line-height:1.25}
+.spot:nth-child(odd) .front{transform:rotate(-1.5deg)}
+.spot:nth-child(even) .front{transform:rotate(1.5deg)}
+.progress{margin-top:2rem;font-weight:800}
+.dots{display:flex;gap:.5rem;justify-content:center;margin-top:.5rem}
+.dots i{width:14px;height:14px;border-radius:50%;border:2px solid currentColor;display:block;transition:background .3s}
+.dots i.on{background:var(--pink)}
+
+/* found */
+#found h2{font-size:clamp(2.4rem,8vw,4.6rem);margin-bottom:1.5rem}
+.bday{width:min(380px,90vw);position:relative;perspective:1400px;margin:0 auto 2rem;transition:transform 1.4s cubic-bezier(.6,0,.2,1)}
+.bday .inside{position:relative;min-height:440px;background:var(--card);color:var(--ink);border:3px solid var(--ink);padding:1.6rem 1.3rem;text-align:left;display:flex;flex-direction:column;justify-content:center;font-size:1.02rem;box-shadow:8px 8px 0 var(--pink)}
+.bday .inside>*{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.bday.open .inside>*{opacity:1;transform:none}
+.bday.open .inside>*:nth-child(1){transition-delay:.9s}
+.bday.open .inside>*:nth-child(2){transition-delay:1.3s}
+.bday.open .inside>*:nth-child(3){transition-delay:1.7s}
+.bday.open .inside>*:nth-child(4){transition-delay:2.1s}
+.bday.open .inside>*:nth-child(5){transition-delay:2.5s}
+.bday.open .inside>*:nth-child(6){transition-delay:2.9s}
+.bday.open .inside>*:nth-child(7){transition-delay:3.3s}
+@media (min-width:760px){.bday.open{transform:translateX(50%)}}
+@media (max-width:759px){.bday.open .cover{opacity:0;transition:transform 1.4s cubic-bezier(.6,0,.2,1),opacity .4s 1s}}
+.bday .inside h3{font-size:1.8rem;margin-bottom:.8rem;color:var(--lake)}
+.bday .inside p{margin:0 0 .8rem}
+.bday .inside .sign{font-size:1.4rem;margin-top:.4rem}
+.cover{position:absolute;inset:0;transform-origin:left center;transition:transform 1.4s cubic-bezier(.6,0,.2,1);transform-style:preserve-3d;z-index:2;border:0;padding:0;background:none}
+.cover .cf,.cover .cb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:3px solid var(--ink)}
+.cover .cf{background:var(--pink);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ink);padding:1rem}
+.cover .cf span{font-family:"Bagel Fat One",sans-serif;font-size:2.6rem;line-height:1}
+.cover .cf small{margin-top:1rem;font-weight:800}
+.cover .cb{background:var(--sun);transform:rotateY(180deg)}
+.bday.open .cover{transform:rotateY(-170deg);pointer-events:none}
+.cake{font-size:4rem;display:block;margin-bottom:.4rem;animation:bounce 1.2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+#found .ps{max-width:34ch;opacity:.85}
+
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:50;width:100%;height:100%}
+
+.dog{display:inline-block;animation:wag .35s ease-in-out infinite alternate;transform-origin:bottom center}
+@keyframes wag{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+
+<section id="intro">
+  <div class="env" aria-hidden="true">
+    <svg viewBox="0 0 180 120"><rect x="4" y="4" width="172" height="112" fill="#FFFDF7" stroke="#1B1B2F" stroke-width="4"/><path d="M4 4 L90 70 L176 4" fill="none" stroke="#1B1B2F" stroke-width="4"/><circle cx="90" cy="70" r="12" fill="#F48FB1" stroke="#1B1B2F" stroke-width="3"/></svg>
+  </div>
+  <h1>Madison, I need to tell you something</h1>
+  <p>It's about your birthday. Please remain calm.</p>
+  <button class="btn" id="toConfess">Okay, what did you do</button>
+</section>
+
+<section id="confess" class="hidden">
+  <div class="poster">
+    <h2>MISSING</h2>
+    <div class="sub">One (1) birthday card</div>
+    <div class="pic hand">photo also missing</div>
+    <ul>
+      <li>Very nice. Top shelf. Not from the gas station.</li>
+      <li>Last seen: in my hand, feeling proud</li>
+      <li>May be answering to "where did I put that"</li>
+    </ul>
+    <div class="reward hand">Reward: my eternal gratitude</div>
+  </div>
+  <p class="lead" style="margin-top:2.5rem">I bought you a card. A genuinely great card. And then I lost it. So I built you a website instead, because apparently that's easier for me than keeping track of paper.</p>
+  <button class="btn" id="toSearch">Help me find it</button>
+</section>
+
+<section id="search" class="hidden">
+  <h2>The search is on</h2>
+  <p class="lead">Check every spot. Leave no cushion unturned.</p>
+  <div class="spots" id="spots"></div>
+  <div class="progress">
+    <div id="progText">0 of 4 searched</div>
+    <div class="dots" id="dots"><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<section id="found" class="hidden">
+  <h2>Wait. Is that...</h2>
+  <div class="bday" id="bday">
+    <div class="inside">
+      <h3>Happy 29th birthday to my sweet wife</h3>
+      <p>Okay so this isn't the actual card. The actual card is still out there somewhere, living its best life.</p>
+      <p>I'm so glad we went camping. We had such a fun time and I'd do it all over again with you.</p>
+      <p>I really really hope you liked the birthday cake I baked for you. Yes, it tasted like a flourless cake. Yes, it was heavy. But it's the thought that counts, right?</p>
+      <p>I love you, I love you, I love you.</p>
+      <p class="sign hand">Love,<br>Yer <span class="dog">🐶</span><span class="dog">🐶</span></p>
+      <small>P.S. The dogs are still suspects.</small>
+    </div>
+    <button class="cover" id="cover" aria-label="Open the card">
+      <div class="cf"><span class="cake" aria-hidden="true">🎂</span><span>Found it!!</span><small>(tap to open)</small></div>
+      <div class="cb"></div>
+    </button>
+  </div>
+  <button class="btn hidden" id="again">More confetti please</button>
+</section>
+
+<script>
+(function(){
+  var spots=[
+    {e:"🛋️",t:"The couch",s:"Classic hiding spot",f:"Found: 37 cents, a hair tie, and a popcorn kernel from last year. No card."},
+    {e:"🐕",t:"The dogs",s:"Prime suspects",f:"Both dogs were questioned. Neither is talking. One looked very guilty. Inconclusive."},
+    {e:"🚗",t:"The car",s:"Glovebox, seats, under the mat",f:"Three receipts, one sunglasses lens, and a french fry of unknown age. Still no card."},
+    {e:"🧥",t:"My jacket",s:"I already checked. Probably.",f:"Hold on. There's something in here..."}
+  ];
+  var grid=document.getElementById('spots'),dots=document.querySelectorAll('#dots i'),prog=document.getElementById('progText'),count=0;
+  spots.forEach(function(s,i){
+    var b=document.createElement('button');b.className='spot';b.setAttribute('aria-label','Search '+s.t);
+    b.innerHTML='<div class="inner"><div class="face front"><div class="emo">'+s.e+'</div><b>'+s.t+'</b><small>'+s.s+'</small></div><div class="face back"><div class="hand">'+s.f+'</div></div></div>';
+    b.addEventListener('click',function(){
+      if(b.classList.contains('open'))return;
+      b.classList.add('open');dots[count].classList.add('on');count++;
+      prog.textContent=count+' of 4 searched';
+      if(count===4){prog.textContent='Something turned up!';setTimeout(function(){show('found');},1600);}
+    });
+    grid.appendChild(b);
+  });
+
+  function show(id){
+    ['intro','confess','search','found'].forEach(function(x){document.getElementById(x).classList.toggle('hidden',x!==id);});
+    window.scrollTo(0,0);
+  }
+  document.getElementById('toConfess').onclick=function(){show('confess');};
+  document.getElementById('toSearch').onclick=function(){show('search');};
+  document.getElementById('cover').onclick=function(){
+    document.getElementById('bday').classList.add('open');
+    setTimeout(function(){burst(260);document.getElementById('again').classList.remove('hidden');},700);
+  };
+  document.getElementById('again').onclick=function(){burst(220);};
+
+  var cv=document.getElementById('confetti'),ctx=cv.getContext('2d'),parts=[],running=false;
+  var cols=['#F2B632','#F48FB1','#1F3A5F','#6FC3DF','#FFFDF7','#C8102E'];
+  function size(){cv.width=innerWidth;cv.height=innerHeight;}size();addEventListener('resize',size);
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function burst(n){
+    if(reduce)return;
+    for(var i=0;i<n;i++){
+      parts.push({x:innerWidth/2,y:innerHeight*0.45,vx:(Math.random()-.5)*16,vy:-Math.random()*16-4,w:6+Math.random()*8,h:4+Math.random()*6,r:Math.random()*6,vr:(Math.random()-.5)*.4,c:cols[i%cols.length],life:0});
+    }
+    if(!running){running=true;requestAnimationFrame(tick);}
+  }
+  function tick(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    parts=parts.filter(function(p){return p.y<cv.height+40&&p.life<400;});
+    parts.forEach(function(p){
+      p.vy+=.35;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.life++;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.fillStyle=p.c;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();
+    });
+    if(parts.length)requestAnimationFrame(tick);else{running=false;ctx.clearRect(0,0,cv.width,cv.height);}
+  }
+})();
+</script>
+</body>
+</html>
